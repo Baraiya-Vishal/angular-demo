@@ -1,0 +1,36 @@
+.tasks-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tasks-table th, .tasks-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .tasks-table th {
+    background-color: #f4f4f9;
+  }
+  
+  .tasks-table td {
+    background-color: #fafafa;
+  }
+  
+  .no-tasks {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+  }
+  

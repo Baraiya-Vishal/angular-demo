@@ -1,0 +1,13 @@
+<!-- src/app/communication/child/child.component.html -->
+<div class="child">
+    <h3>Child Component</h3><br>
+
+    <strong>message from parent:</strong><p>{{ childMessage }}</p><br>
+
+    <strong>enter the text and its show when parent submit the data:</strong>
+    <input [(ngModel)]="childData" placeholder="Enter data" /><br><br>
+
+    <strong>click button and prodect is displyed on parent screen:</strong>
+    <button (click)="addToCart()">Add to Cart</button><br><br>
+</div>
+  

@@ -1,0 +1,150 @@
+.padding-16{
+  padding: 16px;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .task-table th, .task-table td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .task-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .task-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .task-table .completed {
+    background-color: #e0ffe0; /* Light green for completed tasks */
+  }
+  
+  .task-table .pending {
+    background-color: #ffe0e0; /* Light red for pending tasks */
+  }
+  
+  .task-table .notify-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .task-table .notify-btn:hover {
+    background-color: #0056b3;
+  }
+/* Completed tasks with hover effect */
+.completed-task {
+  background-color: #e0ffe0; /* Light green for completed tasks */
+  color: black;
+}
+
+.completed-task:hover {
+  background-color: #c1e6c1; /* Slightly darker green on hover */
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3); /* Green shadow on hover */
+}
+
+/* Pending tasks with hover effect */
+.pending-task {
+  background-color: #ffe0e0; /* Light red for pending tasks */
+  color: black;
+}
+
+.pending-task:hover {
+  background-color: #f5b0b0; /* Slightly darker red on hover */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); /* Red shadow on hover */
+}
+
+  /* Center-align header text */
+/* Left align the first column (ID) */
+.left-align {
+  text-align: left;
+}
+
+/* Center align the middle columns (Title, Completed) */
+.center-align {
+  text-align: center;
+}
+
+/* Right align the last column (Actions) */
+.right-align {
+  text-align: right;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.task-card {
+  padding: 16px;
+}
+
+.view-toggle {
+  margin-bottom: 16px;
+}
+
+.view-toggle button {
+  margin-right: 8px; /* Add space between buttons */
+}
+
+.view-toggle button:last-child {
+  margin-right: 0; /* Remove margin for the last button */
+}
+
+.view-toggle button.active {
+  background-color: #3f51b5; /* Example active background */
+  color: white; /* Text color for active button */
+  font-weight: bold; /* Bold font for emphasis */
+}
+
+.view-toggle button:not(.active) {
+  opacity: 0.8; /* Slight transparency for inactive buttons */
+}
+  
+tr{
+  width: 100%;
+}
+
+.custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  width: 100%;
+  display: block;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  width: 100%;            
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .task-card:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

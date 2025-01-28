@@ -1,0 +1,18 @@
+<div class="landing-container">
+    <h1 class="landing-title">Let's Start Angular</h1>
+    <p class="landing-description">Welcome to the Angular demo project. Let's explore Angular features and discover what
+        Angular can do!</p>
+
+    <div class="button-container">
+        <a [routerLink]="['/componet-communication']" class="btn btn-primary">Go to Communication Demo</a>
+        <a [routerLink]="['/project-management']" class="btn btn-primary">Go to Dashboard</a>
+        <a [routerLink]="['/machine-learning']" class="btn btn-primary">Machine Learning</a>
+        <a [routerLink]="['/task-management']" class="btn btn-primary">Task Management</a>
+    </div>
+</div>
+
+
+<!-- 
+<app-task-list [taskList]="taskList" [isTableView]=true (taskUpdated)="onTaskUpdated($event)"></app-task-list> -->
+
+

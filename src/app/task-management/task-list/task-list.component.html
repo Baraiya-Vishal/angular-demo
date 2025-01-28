@@ -1,0 +1,127 @@
+<div class="padding-16">
+
+    <app-task-filter [taskList]="taskList" (filteredTaskList)="onTaskFilter($event)"></app-task-filter>
+
+    <div class="view-toggle">
+        <button [class.active]="isTableView" mat-raised-button color="primary" (click)="isTableView = true">Table
+            View</button>
+        <button [class.active]="!isTableView" mat-raised-button color="accent" (click)="isTableView = false">Card
+            View</button>
+    </div>
+
+    <!-- Table View -->
+    <div *ngIf="isTableView" class="table-boundary">
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 example-list" cdkDropList
+            (cdkDropListDropped)="drop($event)">
+
+            <!-- ID Column (Left aligned) -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef class="left-align" mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let element" class="left-align"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- Title Column (Center aligned) -->
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef class="center-align" mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.title}} </td>
+            </ng-container>
+
+            <!-- Completed Column (Center aligned) -->
+            <ng-container matColumnDef="completed">
+                <th mat-header-cell *matHeaderCellDef class="center-align" mat-sort-header> Completed </th>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{ element.completed ? 'Yes' : 'No' }}
+                </td>
+            </ng-container>
+
+            <!-- Actions Column (Right aligned) -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="right-align"> Actions </th>
+                <td mat-cell *matCellDef="let task" class="right-align">
+                    <button mat-raised-button (click)="taskClicked(task)">Notify</button>
+                    <button mat-raised-button (click)="openDialog(task)">Edit</button>
+                </td>
+            </ng-container>
+
+            <!-- Header Row -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <!-- Data Row -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" cdkDragBoundary=".table-boundary" cdkDrag
+                [ngClass]="{
+            'completed-task': row.completed,
+            'pending-task': !row.completed,
+            'example-box' : true
+             }">
+                <div class="custom-placeholder" *cdkDragPlaceholder></div>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+
+    <!-- Card View -->
+    <!-- <div *ngIf="!isTableView" class="card-container">
+        <mat-card *ngFor="let task of taskList" class="task-card"
+            [ngClass]="{'completed-task': task.completed, 'pending-task': !task.completed}">
+            <mat-card-header>
+                <mat-card-title>{{ task.title }}</mat-card-title>
+                <mat-card-subtitle>ID: {{ task.id }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Completed: {{ task.completed ? 'Yes' : 'No' }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="taskClicked(task)">Notify</button>
+                <button mat-raised-button (click)="openDialog(task)">Edit</button>
+            </mat-card-actions>
+        </mat-card>
+    </div> -->
+    <div *ngIf="!isTableView" cdkDropList cdkDropListOrientation="mixed" class="example-list card-container"
+        (cdkDropListDropped)="drop($event)">
+        <mat-card *ngFor="let task of filteredTaskList" class="task-card"
+            [ngClass]="{'completed-task': task.completed, 'pending-task': !task.completed}"
+            cdkDragBoundary=".card-container" cdkDrag>
+
+            <div class="custom-placeholder" *cdkDragPlaceholder></div>
+
+
+            <mat-card-header>
+                <mat-card-title>{{ task.title }}</mat-card-title>
+                <mat-card-subtitle>ID: {{ task.id }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Completed: {{ task.completed ? 'Yes' : 'No' }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button (click)="taskClicked(task)">Notify</button>
+                <button mat-raised-button (click)="openDialog(task)">Edit</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>
+
+
+<!-- <app-task-filter [taskList]="taskList" (filteredTaskList)="onTaskFilter($event)" ></app-task-filter>
+<table class="task-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of filteredTaskList" [ngClass]="task.completed ? 'completed' : 'pending'">
+            <td>{{ task.id }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.completed ? 'Yes' : 'No' }}</td>
+            <td><button (click)="taskClicked(task)" class="notify-btn">Notify</button></td>
+            <td>
+                <button mat-raised-button (click)="openDialog(task)">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table> -->

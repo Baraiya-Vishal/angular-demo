@@ -1,0 +1,22 @@
+/* Container for the form fields and button */
+.filter-container {
+    display: flex;
+    align-items: center;  /* Align items vertically centered */
+    justify-content: flex-end; /* Align items to the left */
+    gap: 16px;  /* Space between form fields and button */
+    width: 100%;
+    flex-wrap: wrap;  /* Ensure items wrap on smaller screens */
+  }
+ 
+  
+  /* Clear Filters button */
+  .clear-button {
+    margin-left: 8px;  /* Add space between button and last form field */
+    height: 56px;  /* Set the same height as the form fields */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+  

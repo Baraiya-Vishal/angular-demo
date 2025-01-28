@@ -1,0 +1,21 @@
+<!-- src/app/communication/parent/parent.component.html -->
+<div class="parent">
+    <h2>Parent Component</h2><br>
+    
+    <strong>Enter message which displayed on Child screen:</strong>
+    <input [(ngModel)]="parentMessage" placeholder="Enter a message" class="form-control" /><br>
+    <p>{{ parentMessage }}</p><br>
+
+    <strong>show the selected product by child:</strong>
+    <p>Selected Product: {{ selectedProduct }}</p><br>
+
+    <strong>on submit its get the data from child form and print here:</strong>
+    <button (click)="submit()">Submit</button><br>
+    <p>{{childData}}</p><br>
+
+    <strong>show notification:</strong>
+    <button (click)="triggerNotification()">Trigger Notification</button>
+
+    <app-child class="child-container" [childMessage]="parentMessage" (productAdded)="onProductAdded($event)"></app-child>  <!-- Pass message to child -->
+</div>
+  

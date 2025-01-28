@@ -1,0 +1,4 @@
+<div *ngIf="errorMessage" class="global-error-container">
+    <p class="global-error-text">{{ errorMessage }}</p>
+    <button class="close-btn" (click)="closeError()">&#10005;</button>
+</div>

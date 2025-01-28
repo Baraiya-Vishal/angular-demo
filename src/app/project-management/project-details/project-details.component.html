@@ -1,0 +1,9 @@
+<div *ngIf="project">
+    <h1>{{ project.name }}</h1>
+    <p><strong>ID:</strong> {{ project.id }}</p>
+    <p><strong>Description:</strong> {{ project.description }}</p>
+    <p><strong>Status:</strong> {{ project.status }}</p>
+</div>
+<div *ngIf="!project">
+    <p>Project not found.</p>
+</div>

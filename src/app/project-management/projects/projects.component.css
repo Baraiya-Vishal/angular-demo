@@ -1,0 +1,142 @@
+/* Container for the projects section */
+
+.mb-10{
+  margin-bottom:10px !important ;
+}
+
+.projects-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Add Project Button */
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #168d1c;
+}
+
+/* Table Styles */
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.projects-table th,
+.projects-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.projects-table th {
+  background-color: #f4f4f9;
+  font-weight: 600;
+}
+
+.projects-table td {
+  background-color: #fff;
+}
+
+.projects-table tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+.projects-table td a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.projects-table td a:hover {
+  color: #45a049;
+}
+
+/* Hover effect for table rows */
+.projects-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-danger{
+  background-color: #f44336;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+}
+/* Action Buttons */
+button[type="button"] {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+
+button[type="button"]:hover {
+  background-color: #e53935;
+}
+
+/* No projects message */
+.no-projects {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  padding-top: 20px;
+}
+
+/* Spacing and layout adjustments for mobile view */
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .projects-table th,
+  .projects-table td {
+    padding: 10px;
+  }
+
+  .projects-table {
+    font-size: 14px;
+  }
+}

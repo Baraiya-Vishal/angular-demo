@@ -1,0 +1,54 @@
+.sidenav-container {
+    height: 100%;
+    background-color: #fff;
+    color: #333;
+
+}
+
+mat-sidenav {
+    width: 240px;
+    background-color: #f4f5f7;
+    border-right: 1px solid #e1e4e8;
+    padding: 0px 10px;
+}
+
+
+.active-nav-item {
+    background-color: #d7e3ff;
+    color: white;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+mat-list-item:hover {
+    background-color: transparent; /* Slightly darker on hover */
+    color: #333;
+}
+.mat-mdc-list-item>.mat-focus-indicator:hover{
+    background-color: #d7e3ff;
+    color: #333;
+}
+
+mat-list-item {
+    background-color: transparent; /* Reset default background */
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+mat-list-item:hover {
+    background-color: #d7e3ff; /* Custom light blue hover effect */
+    color: #333;
+    text-decoration: none;
+}
+
+
+.mdc-list-item:focus::before {
+    /* background-color: var(--mdc-list-list-item-focus-state-layer-color, var(--mat-sys-on-surface)); */
+    background-color: #d7e3ff !important;
+}
+
+.mdc-list-item:hover::before {
+    background-color: #d7e3ff !important;
+    opacity: var(--mdc-list-list-item-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
+}

@@ -1,0 +1,28 @@
+
+<div class="page-heading">
+    <h2>Task Management</h2>
+</div>
+
+<app-task-list [taskList]="taskList" [isTableView]=true (taskUpdated)="onTaskUpdated($event)"></app-task-list>
+
+<!-- Updated Task Section -->
+<div *ngIf="updatedTask" class="updated-task-container">
+    <!-- Title Header for Updated Task -->
+    <mat-card class="task-header-card">
+        <mat-card-header>
+            <mat-card-title>Task Management</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="task-details">
+                <div><strong>ID:</strong> <span class="task-info">{{ updatedTask.id }}</span></div>
+                <div><strong>Title:</strong> <span class="task-info">{{ updatedTask.title }}</span></div>
+                <div><strong>Status:</strong>
+                    <span class="task-info" [ngClass]="{'completed': updatedTask.completed, 'pending': !updatedTask.completed}">
+                        {{ updatedTask.completed ? 'Completed' : 'Pending' }}
+                    </span>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+</div>

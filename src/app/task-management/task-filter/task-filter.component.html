@@ -1,0 +1,17 @@
+<div class="filter-container">
+    <mat-form-field appearance="fill" >
+        <mat-label>Task Name</mat-label>
+        <input matInput [(ngModel)]="taskFilter.title" (input)="filterTasks()" placeholder="Enter task name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" >
+        <mat-label>Select Status</mat-label>
+        <mat-select [(ngModel)]="taskFilter.status" (ngModelChange)="filterTasks()">
+            <mat-option value="">All</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+            <mat-option value="Pending">Pending</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click)="clearFilters()" class="clear-button">Clear Filters</button>
+</div>

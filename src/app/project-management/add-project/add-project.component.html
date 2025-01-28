@@ -1,0 +1,11 @@
+<h2>Add New Project</h2>
+<form [formGroup]="projectForm" (ngSubmit)="addProject()">
+  <input formControlName="name" placeholder="Project Name" />
+  <input formControlName="description" placeholder="Description" />
+  <select formControlName="status">
+    <option value="Not Started">Not Started</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+  </select>
+  <button type="submit" [disabled]="projectForm.invalid">Add Project</button>
+</form>

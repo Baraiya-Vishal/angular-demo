@@ -1,0 +1,29 @@
+<div class="prophet-container">
+    <h1 class="prophet-title">Prophet Model</h1>
+
+    <div *ngIf="prophet && prophet.length > 0" class="forecast-section">
+        <h2>Predictions:</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Predicted Deals</th>
+                    <th>Lower Bound</th>
+                    <th>Upper Bound</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prediction of prophet">
+                    <td>{{ prediction.Date }}</td>
+                    <td>{{ prediction.Predicted_Deals | number:'1.2-2' }}</td>
+                    <td>{{ prediction.yhat_lower | number:'1.2-2' }}</td>
+                    <td>{{ prediction.yhat_upper | number:'1.2-2' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button (click)="getProphetPrediction()" class="btn btn-primary">
+       Fetch Prophet Prediction
+    </button>
+</div>

@@ -1,0 +1,33 @@
+<div class="projects-container">
+    <h2>Projects</h2>
+    <button class="mb-10" [routerLink]="'/project-management/projects/add'">Add Project</button>
+    <table *ngIf="projects.length > 0" class="projects-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>view</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of projects">
+                <td>{{ project.id }}</td>
+                <td>{{ project.name }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.status }}</td>
+                <td><a [routerLink]="['project-details',project.id]">view</a></td>
+                <td>
+                    <button [routerLink]="['/project-management/projects/edit', project.id]">Edit</button>
+                    <button class="btn-danger" (click)="deleteProject(project.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="projects.length === 0" class="no-projects">
+        No projects available.
+    </div>
+</div>
