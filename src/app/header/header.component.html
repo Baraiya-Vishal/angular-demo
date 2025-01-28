@@ -1,6 +1,28 @@
 <mat-toolbar color="primary">
-    <span>Task Manager</span>
+    <div class="header-icon">
+        <span>Task Manager</span>
+        <button mat-icon-button (click)="toggleSidebar()" class="menu-button">
+            <span class="line" [class.middle-line]="true"></span>
+            <span class="line" [class]="isSidebarOpen ? 'top-line open' : 'top-line'"></span>
+            <span class="line" [class]="isSidebarOpen ? 'bottom-line open' : 'bottom-line'"></span>
+        </button>
+    </div>
     <span class="spacer"></span>
-    <button mat-button (click)="navigateToProfile()">Profile</button>
-    <button mat-button (click)="logout()">Logout</button>
+
+    <!-- Profile image with menu -->
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-button">
+        <img src="image/DeadPool.jpg" alt="Profile" class="profile-img" />
+    </button>
+
+    <!-- Menu -->
+    <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item (click)="navigateToProfile()">
+            <mat-icon>person</mat-icon>
+            Profile Settings
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            Logout
+        </button>
+    </mat-menu>
 </mat-toolbar>

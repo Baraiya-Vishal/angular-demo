@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<!-- <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened>
         <mat-nav-list>
             <mat-list-item routerLink="/project-management/dashboard" routerLinkActive="active-nav-item"
@@ -30,6 +30,56 @@
                     <span class="mat-mdc-list-item-unscoped-content mdc-list-item__primary-text">Profile</span>
                 </span>
             </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" [opened]="true">
+        <mat-nav-list>
+            <mat-list-item routerLink="/project-management/dashboard" routerLinkActive="active-nav-item"
+                [routerLinkActiveOptions]="{ exact: true }" class="mat-mdc-list-item">
+                <span class="mdc-list-item__content">
+                    <span class="mat-mdc-list-item-unscoped-content mdc-list-item__primary-text">
+                        Dashboard
+                    </span>
+                </span>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/project-management/tasks" routerLinkActive="active-nav-item"
+                [routerLinkActiveOptions]="{ exact: true }" class="mat-mdc-list-item">
+                <span class="mdc-list-item__content">
+                    <span class="mat-mdc-list-item-unscoped-content mdc-list-item__primary-text">Task</span>
+                </span>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/project-management/project" routerLinkActive="active-nav-item"
+                [routerLinkActiveOptions]="{ exact: true }" class="mat-mdc-list-item">
+                <span class="mdc-list-item__content">
+                    <span class="mat-mdc-list-item-unscoped-content mdc-list-item__primary-text">Project</span>
+                </span>
+            </mat-list-item>
+
+            <mat-list-item routerLink="/profile" routerLinkActive="active-nav-item"
+                [routerLinkActiveOptions]="{ exact: true }" class="mat-mdc-list-item">
+                <span class="mdc-list-item__content">
+                    <span class="mat-mdc-list-item-unscoped-content mdc-list-item__primary-text">Profile</span>
+                </span>
+            </mat-list-item>
+           
+            <mat-list-item routerLink="/landng-page" routerLinkActive="active-nav-item"
+                [routerLinkActiveOptions]="{ exact: true }" class="mat-mdc-list-item">
+                <span class="mdc-list-item__content">
+                    <span class="mat-mdc-list-item-unscoped-content mdc-list-item__primary-text">Angular Demo</span>
+                </span>
+            </mat-list-item>
+           
         </mat-nav-list>
     </mat-sidenav>
 

@@ -1,0 +1,34 @@
+<div *ngIf="userProfile">
+    <mat-card class="profile-card">
+        <mat-card-header class="profile-header">
+            <div mat-card-avatar class="profile-avatar">
+                <img [src]="userProfile.profilePhotoPath" alt="Profile Image" class="profile-img">
+            </div>
+            <mat-card-title class="profile-name">{{ userProfile.firstName }} {{ userProfile.lastName }}</mat-card-title>
+            <mat-card-subtitle class="profile-role">{{ userProfile.role }} - {{ userProfile.designation
+                }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="profile-content">
+            <div class="profile-info">
+                <h3>Contact Information</h3>
+                <mat-divider></mat-divider>
+                <p><strong>Phone:</strong> {{ userProfile.phoneNumber }}</p>
+                <p><strong>Gender:</strong> {{ userProfile.gender === 1 ? 'Male' : 'Female' }}</p>
+                <p><strong>Date of Birth:</strong> {{ userProfile.dateOfBirth | date }}</p>
+            </div>
+
+            <div class="profile-address">
+                <h3>Addresses</h3>
+                <mat-divider></mat-divider>
+                <p><strong>Permanent Address:</strong> {{ userProfile.permanentAddress }}</p>
+                <p><strong>Current Address:</strong> {{ userProfile.currentAddress }}</p>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions class="profile-actions">
+            <button mat-raised-button color="primary" class="edit-button" (click)="editProfile()">Edit Profile</button>
+            <button mat-raised-button color="warn" class="logout-button" (click)="logout()">Logout</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
