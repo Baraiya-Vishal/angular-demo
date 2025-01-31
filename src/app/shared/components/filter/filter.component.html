@@ -1,0 +1,28 @@
+<!-- src/app/components/filter/filter.component.html -->
+<div class="filter-container">
+    <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="filter-form">
+      <div *ngFor="let filter of filterConfig" class="filter-item">
+        <mat-form-field *ngIf="filter.type === 'text'" appearance="fill" class="form-field" subscriptSizing="dynamic">
+          <mat-label>{{ filter.label }}</mat-label>
+          <input matInput [formControlName]="filter.field"  placeholder="Enter {{ filter.label }}" />
+        </mat-form-field>
+  
+        <mat-form-field *ngIf="filter.type === 'number'" appearance="fill" class="form-field" subscriptSizing="dynamic">
+          <mat-label>{{ filter.label }}</mat-label>
+          <input matInput type="number" [formControlName]="filter.field"  (input)="onFilterChange(filter.field, filter.triggerOnChange ?? false)" placeholder="Enter {{ filter.label }}" />
+        </mat-form-field>
+  
+        <mat-form-field *ngIf="filter.type === 'select'" appearance="fill" class="form-field" subscriptSizing="dynamic">
+          <mat-label>{{ filter.label }}</mat-label>
+          <mat-select [formControlName]="filter.field" (selectionChange)="onFilterChange(filter.field, filter.triggerOnChange ?? false)">
+            <mat-option *ngFor="let option of filter.options" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="filterForm.invalid">Apply Filters</button>
+        <button mat-raised-button color="warn" type="button" (click)="resetFilters()">Reset Filters</button>
+      </div>
+    </form>
+  </div>

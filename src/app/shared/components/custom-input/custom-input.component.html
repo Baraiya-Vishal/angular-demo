@@ -1,0 +1,77 @@
+<div class="form-group" [ngClass]="getDynamicClass()">
+    <mat-form-field appearance="fill" *ngIf="config?.type !== 'checkbox'">
+      <mat-label *ngIf="config?.label">{{ config?.label }}</mat-label>
+  
+      <ng-container [ngSwitch]="config?.type">
+        <!-- Text Input -->
+        <input *ngSwitchCase="'text'"
+               matInput
+               type="text"
+               [placeholder]="config?.placeholder"
+               [formControl]="control"
+               [required]="config?.required" />
+  
+        <!-- Email Input -->
+        <input *ngSwitchCase="'email'"
+               matInput
+               type="email"
+               [placeholder]="config?.placeholder"
+               [formControl]="control"
+               [required]="config?.required" />
+
+        <!-- Number Input -->
+        <input *ngSwitchCase="'number'"
+               matInput
+               type="number"
+               [placeholder]="config?.placeholder"
+               [formControl]="control"
+               [required]="config?.required" />
+
+        <!-- Password Input -->
+        <input *ngSwitchCase="'password'"
+               matInput
+               type="password"
+               [placeholder]="config?.placeholder"
+               [formControl]="control"
+               [required]="config?.required" />
+
+        <!-- Textarea -->
+        <textarea *ngSwitchCase="'textarea'"
+                  matInput
+                  [placeholder]="config?.placeholder"
+                  [formControl]="control"
+                  [required]="config?.required"></textarea>
+
+        <!-- Date Input -->
+        <input *ngSwitchCase="'date'"
+               matInput
+               type="date"
+               [formControl]="control"
+               [required]="config?.required" />
+
+        <!-- Select Dropdown -->
+        <mat-select *ngSwitchCase="'select'"
+                    [formControl]="control"
+                    [required]="config?.required">
+          <mat-option *ngFor="let option of config?.options" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </ng-container>
+
+      <!-- Validation Errors -->
+      <mat-error *ngIf="control.invalid && (control.dirty || control.touched)">
+        <ng-container *ngIf="control.errors?.['required']">This field is required.</ng-container>
+        <ng-container *ngIf="control.errors?.['email']">Please enter a valid email.</ng-container>
+        <ng-container *ngIf="control.errors?.['minlength']">Minimum length not met.</ng-container>
+        <ng-container *ngIf="control.errors?.['customError']">{{ control.errors?.['customError'] }}</ng-container>
+      </mat-error>
+
+    </mat-form-field>
+
+    <!-- Checkbox (Outside mat-form-field) -->
+    <mat-checkbox *ngIf="config?.type === 'checkbox'"
+                  [formControl]="control"
+                  [required]="config?.required">
+      {{ config?.label }}
+    </mat-checkbox>
+
+</div>

@@ -1,0 +1,25 @@
+mat-dialog-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  mat-dialog-content {
+    font-size: 1rem;
+    padding: 20px;
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  button {
+    padding: 8px 16px;
+  }
+  
+  button[color="warn"] {
+    background-color: var(--mat-sys-error);
+    color: white;
+  }
+  

@@ -1,0 +1,45 @@
+.department-container {
+  padding-top: 0px;
+  background-color: #f5f5f5;
+}
+
+.department-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Ensure Department Name column takes all available space */
+.department-header,
+.department-cell {
+  width: auto;
+  /* Takes remaining space */
+  flex-grow: 1;
+}
+
+/* Set a fixed width for the Actions column */
+.actions-header,
+.actions-cell {
+  width: 120px;
+  /* Adjust this width as needed */
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+  flex: none !important;
+}
+
+/* Align action buttons properly */
+.actions-cell {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.is-active-header ,.is-active-cell {
+  flex: unset !important;
+  min-width: 94.7px;
+}
+
+/* Space between buttons */
+.mat-icon-button {
+  margin: 0 4px;
+}

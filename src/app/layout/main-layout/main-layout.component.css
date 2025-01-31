@@ -1,0 +1,11 @@
+.main-content {
+    display: flex;
+    height: calc(100vh - 64px);
+  }
+  
+  .content-area {
+    flex: 1;
+    padding: 20px;
+    padding-top:0px ;
+  }
+  

@@ -2,11 +2,18 @@
 <app-global-error></app-global-error>
 <app-global-success></app-global-success>
 
-<app-header *ngIf="isLoggedIn"></app-header> 
 
-<div class="main-content" > 
-  <app-sidebar *ngIf="isLoggedIn"></app-sidebar>
-  <div class="content-area">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<ng-container *ngIf="layoutType === 'main'; else noLayout">
+
+   <app-main-layout></app-main-layout>
+
+</ng-container>
+
+<ng-template #noLayout>
+    <div class="main-content">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</ng-template>

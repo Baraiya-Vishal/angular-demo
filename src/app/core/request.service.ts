@@ -64,7 +64,7 @@ export class RequestService {
     if (endpoint.startsWith('/project')) {
       return `${environment.pmsProjectApiUrl}${endpoint}`;
     }
-    if (endpoint.startsWith('/api/employee')) {
+    if (endpoint.startsWith('/api/employee') || endpoint.startsWith('/api/department') ) {
       return `${environment.pmsEmployeeApiUrl}${endpoint}`;
     }
     return `${environment.pmsApiUrl}${endpoint}`;

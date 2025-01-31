@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <span>{{ title }}</span>
+    <span class="spacer"></span>
+
+    <!-- Dynamic Buttons -->
+    <ng-container *ngFor="let button of buttons">
+        <button *ngIf="button.visible" mat-raised-button [color]="button.color" (click)="button.click.emit()">
+            <!-- Add icon conditionally -->
+            <mat-icon *ngIf="button.icon">{{ button.icon }}</mat-icon>
+            {{ button.label }}
+        </button>
+    </ng-container>
+</mat-toolbar>

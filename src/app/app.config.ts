@@ -7,13 +7,14 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { signatureInterceptor } from './interceptors/signature.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AuthInterceptor } from './shared/intercepter/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
      provideRouter(routes), provideClientHydration(withEventReplay()),
      provideHttpClient( 
         withFetch(),
-        withInterceptors([signatureInterceptor]),
+        withInterceptors([signatureInterceptor,AuthInterceptor]),
      ),
      LandingPageComponent,
      FormsModule, provideAnimationsAsync()]

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{ action }} Confirmation</h1>
+<mat-dialog-content>
+    <p [innerHTML]="confirmationMessage"></p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="onConfirm()">Delete</button>
+</mat-dialog-actions>

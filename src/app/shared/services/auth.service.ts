@@ -12,6 +12,9 @@ import { RequestService } from '../../core/request.service';
 })
 export class AuthService {
   isLoggedIn: boolean = false;
+  private userSubject = new BehaviorSubject<any>(null);
+  public user$ = this.userSubject.asObservable();
+
   constructor(
     private requestService: RequestService,
     private router: Router,
@@ -48,6 +51,8 @@ export class AuthService {
         next: (response: any) => {
           console.log('Login successful', response);
           if (response.result) {
+            this.storeToken(response.result);
+            this.decodeAndStoreUser(response.result);
             localStorage.setItem('jwtToken', response.token);
             localStorage.setItem('userId', "d1a92ff8-9a67-4aeb-8869-c47429adf760");
             console.log("token");
@@ -67,12 +72,54 @@ export class AuthService {
       });
   }
 
+  private storeToken(token: string): void {
+    localStorage.setItem('authToken', token);
+  }
+
+  private decodeAndStoreUser(token: string): void {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const user = {
+      userName: payload.userName,
+      userId: payload.userId,
+      roleId: payload.roleId
+    };
+    console.log(payload.userId);
+    localStorage.setItem('userData', JSON.stringify(user));
+    this.userSubject.next(user);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
+  private loadUserFromStorage(): void {
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      this.userSubject.next(JSON.parse(userData));
+    }
+  }
+
+  getUserRole(): string | null {
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    return userData.roleId || null;
+  }
+
+  isAdmin(): boolean {
+    return this.getUserRole() === '2' ;  // Assuming roleId 'admin' is used to identify admin
+  }
   // auth.service.ts
   logout(): void {
     localStorage.removeItem('jwtToken'); // Remove the token from localStorage
     localStorage.removeItem('userId');
     this.isLoggedIn = false;
     this.isAuthenticatedSubject.next(this.isLoggedIn);
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    this.userSubject.next(null);
     this.router.navigate(['/login']); // Redirect to login page
   }
   

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{ department.id ? 'Update' : 'Create' }} Department</h1>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="form-field" subscriptSizing="dynamic">
+    <mat-label>Department Name</mat-label>
+    <input matInput [(ngModel)]="department.name" #deptName="ngModel" required/>
+    <mat-error *ngIf="deptName.invalid && deptName.touched">Department Name is required</mat-error>
+  </mat-form-field>
+  <mat-checkbox [(ngModel)]="department.isActive">Active</mat-checkbox>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="deptName.invalid">Save</button>
+</mat-dialog-actions>

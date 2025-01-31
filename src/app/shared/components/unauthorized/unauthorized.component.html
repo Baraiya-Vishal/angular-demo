@@ -1,0 +1,19 @@
+<mat-card class="unauthorized-card">
+    <mat-card-header>
+      <mat-card-title class="header-title">
+        <mat-icon>error_outline</mat-icon>
+        <span>Access Denied</span>
+      </mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <p class="message">You don't have permission to view this page. Please log in with an authorized account.</p>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="login-button" (click)="goToLogin()">
+        Go to Login
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  

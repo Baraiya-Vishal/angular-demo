@@ -1,0 +1,60 @@
+
+.filter-container {
+    padding: 16px;
+  }
+  
+  .filter-form {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+    justify-content: end;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-items: stretch;
+  }
+  
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  button {
+    min-width: 120px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+  }
+  
+  @media (max-width: 600px) {
+    .filter-form {
+      grid-template-columns: 1fr;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    button {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+  
+
+
+
+   

@@ -1,0 +1,47 @@
+<div class="department-container">
+
+    <app-filter [filterConfig]="filterConfig" (filterChanged)="onFilterChanged($event)"></app-filter>
+    <!-- Department Table -->
+    <mat-table [dataSource]="departments" matSort (matSortChange)="onSortChange($event)" class="department-table">
+
+        <!-- IsActive Column with Checkbox -->
+        <ng-container matColumnDef="isActive">
+            <mat-header-cell *matHeaderCellDef class="is-active-header"> Is Active </mat-header-cell>
+            <mat-cell *matCellDef="let department" class="is-active-cell">
+                <!-- <input type="checkbox" [(ngModel)]="department.isActive" ngDefaultControl  (change)="onIsActiveChange(department)"/> -->
+                <mat-checkbox [(ngModel)]="department.isActive" (ngModelChange)="onIsActiveChange(department)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+        <!-- Department Name Column (Takes Remaining Space) -->
+        <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="department-header"> Department Name
+            </mat-header-cell>
+            <mat-cell *matCellDef="let department" class="department-cell"> {{ department.name }} </mat-cell>
+        </ng-container>
+
+        <!-- Actions Column (Takes only necessary space) -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="actions-header"> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let department" class="actions-cell">
+                <button mat-icon-button (click)="openDialog(department)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="onDelete(department.id,department.name)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Table Header and Rows -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <!-- <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 50]"
+        (page)="onPageChange($event)">
+    </mat-paginator> -->
+    <app-pagination [totalRecords]="totalRecords" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        (pageChange)="onPageChange($event)">
+    </app-pagination>
+</div>

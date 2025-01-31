@@ -53,3 +53,31 @@ mat-list-item:hover {
     background-color: #d7e3ff !important;
     opacity: var(--mdc-list-list-item-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
 }
+
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+    background: #d7e2ff;
+}
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow:none !important;
+}
+.mat-expansion-panel-header{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--mdc-list-list-item-label-text-color, var(--mat-sys-on-surface));
+    font-family: var(--mdc-list-list-item-label-text-font, var(--mat-sys-body-large-font));
+    line-height: var(--mdc-list-list-item-label-text-line-height, var(--mat-sys-body-large-line-height));
+    font-size: var(--mdc-list-list-item-label-text-size, var(--mat-sys-body-large-size));
+    font-weight: var(--mdc-list-list-item-label-text-weight, var(--mat-sys-body-large-weight));
+    letter-spacing: var(--mdc-list-list-item-label-text-tracking, var(--mat-sys-body-large-tracking));
+    padding: 0 16px;
+    
+}
+
+.mat-expanded{
+    background: #f1f2f3 !important;
+}
+
+.mat-expansion-panel{
+    background: none;
+}
