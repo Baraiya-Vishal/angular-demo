@@ -64,6 +64,7 @@ export class DepartmentComponent implements OnInit {
   isActive = '';
   name = '';
   orderBy = true;
+  serverValidationErrors: { [key: string]: string } = {};
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -192,15 +193,26 @@ export class DepartmentComponent implements OnInit {
 
     this.departmentService.createDepartment(newDepartment).subscribe({
       next: (data) => {
+        this.serverValidationErrors = {};
         this.departments.push(data);
         this.loadDepartments();
         this.snackBar.open('Department created successfully', 'Close', { duration: 3000 });
       },
       error: (error) => {
-        this.snackBar.open('Error creating department', 'Close', { duration: 3000 });
+        if (error.type === 'validation') {
+          this.serverValidationErrors = error.errors; // Bind validation errors
+        } else {
+          this.snackBar.open(error.message, 'Close', { duration: 3000 }); // Show error message
+        }
+        // this.snackBar.open('Error creating department', 'Close', { duration: 3000 });
       }
     });
   }
+
+  getErrorMessage(field: string): string {
+    return this.serverValidationErrors[field] || ''; // Bind errors dynamically
+  }
+
 
   editDepartment(department: Department): void {
     this.selectedDepartment = { ...department }; // Copy to edit
